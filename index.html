@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>الإرشاد الأكاديمي</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* التأكد من الأبعاد الصحيحة */
+        }
+
+        body {
+            font-family: 'Tahoma', sans-serif;
+            background-color: white;
+            padding-top: 80px;
+            margin: 0;
+            overflow-x: hidden;
+            /* منع التمرير الأفقي */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .event-card {
+            height: 450px;
+            /* ارتفاع موحد للبطاقة */
+            width: 100%;
+            /* عرض كامل حسب الكول */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .event-card .card-img-top {
+            height: 233px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .event-card .card-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .event-date {
+            width: 70px;
+            height: 70px;
+            background-color: #ffc107;
+            color: #fff;
+            position: absolute;
+            top: -30px;
+            left: 10px;
+            text-align: center;
+            padding: 10px 0;
+            font-weight: bold;
+            border-radius: 50%;
+        }
+
+        /* ✅ تحسين الأعمدة لتناسب الشاشات الصغيرة */
+        .features .col-md-4,
+        .event-card {
+            padding: 10px;
+        }
+
+        nav li a {
+            text-decoration: none;
+            color: black;
+            margin: 10px;
+            font-size: large;
+        }
+
+        nav li a:hover {
+            color: rgb(1, 1, 144);
+        }
+
+        .btn-main {
+            background-color: #0052cc;
+            color: white;
+        }
+
+        .features {
+            background: #ffffff;
+            margin-top: -20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #0a226b;
+        }
+
+        .left-section {
+            position: relative;
+            /* Optional but good practice */
+            /* ... other styles ... */
+        }
+
+        .left-section img {
+            position: relative;
+            top: -20px;
+            /* Adjust the negative value as needed */
+            /* ... other styles ... */
+        }
+
+        .event-card .card-img-top {
+            height: 233px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .event-date {
+            width: 80px;
+            height: 80px;
+            background-color: #ffc107;
+            color: #fff;
+            position: absolute;
+            right: 300px;
+            top: 180px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            line-height: 1.2;
+        }
+
+        .card-body {
+            margin-top: 20px;
+        }
+
+        .right-section {
+            /* Style the text and input area */
+            flex-grow: 1;
+            text-align: right;
+            /* For right-to-left text */
+        }
+
+        .right-section h1 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            display: flex;
+        }
+
+        .input-group input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            color: #333;
+        }
+
+        .input-group button {
+            background-color: #FFA500;
+            /* Example orange color */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+
+        /* Add more specific styling for fonts, spacing, responsiveness, etc. */
+
+        footer {
+            background: #003366;
+            color: white;
+            padding: 30px 0;
+        }
+
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            margin-bottom: 10px;
+        }
+
+        .form-control.is-invalid {
+            border-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top"
+        style="height: 90px; border-bottom: 1px solid grey; z-index: 1030;">
+        <a class="navbar-brand fw-bold" href="Home.html" style="color: rgb(1, 1, 144);">
+            <img style="width: 60px;height: 70px;margin-top: -10px;margin-right: 40px;" src="images/book.png">دليل
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-center text-center" id="navbarNav"
+            style="background-color: white; padding: 15px; border-radius: 10px;">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #335ef9;" href="Home.html">الرئيسية</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="About.html">عن الكلية</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">تواصل معنا</a>
+                </li>
+            </ul>
+            <a href="#" class="btn btn-primary">سجل الآن</a>
+        </div>
+    </nav>
+
+
+    <br>
+    <!-- Hero Section -->
+    <div class="container" style="margin-bottom:30px;margin-top: 0px;">
+        <div class="row align-items-center justify-content-center">
+            <!-- النص في اليسار -->
+            <div class="col-12 col-md-6 text-center text-md-left mb-4 mb-md-0">
+                <h2 class="fw-bold" style="color: #003366;">انضم الينا فى <span style="color: #ffc107;">دليل</span> ،
+                    اختر الطريق الصحيح لمسيرتك الأكاديمية</h2>
+                <p style="color: gray;">منصتنا توفر لك تجربة إرشاد أكاديمي متكاملة، حيث يمكنك تخطيط جدولك الدراسي، تتبع
+                    تقدمك الأكاديمي،
+                    والحصول على نصائح مخصصة تناسب أهدافك التعليمية.</p>
+                <a href="#" class="btn btn-warning" style="width: 200px;border-radius: 50px;color: #ffffff;">سجل
+                    الآن</a>
+            </div>
+
+            <!-- الصورة في اليمين -->
+            <div class="col-12 col-md-6 d-flex justify-content-center">
+                <div style="position: relative; width: 100%; max-width: 400px; height: auto;">
+                    <img src="images/home.png" alt="طالب" class="img-fluid"
+                        style="object-fit: cover; width: 100%; height: 100%; border-radius: 15px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Features Section -->
+    <div class="features p-4 mt-4 text-center" style="
+    width: 100%;
+    position: relative;
+    top: 40px;
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.25), 0 10px 25px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    background-color: #fff;">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="images/finance.png" style="width: 40px;height: 40px;">
+                <a class="btn btn-outline-danger">الحصول على البيانات المالية</a>
+            </div>
+            <div class="col-md-4">
+                <img src="images/sit number.png" style="width: 40px;height: 40px;">
+                <a class="btn btn-outline-warning">الحصول على رقم الجلوس</a>
+            </div>
+            <div class="col-md-4">
+                <img src="images/email.png" style="width: 40px;height: 40px;">
+                <a class="btn btn-outline-danger">الحصول على البريد الجامعي</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Who? Section -->
+    <div class="container position-relative p-0">
+        <div class="position-relative d-none d-md-block" style="z-index: 0;">
+            <img src="images/rounded dots .webp" class="position-absolute" style="
+            height: 600px; width: 700px;
+            clip-path: polygon(0 50%, 0 100%, 50% 100%, 50% 50%);
+            position: absolute;
+            top:-258px;
+            right: -450px;
+            z-index: -1;">
+        </div>
+
+        <div class="row justify-content-center align-items-center px-3 py-5">
+            <!-- الصورة الأولى في الجزء الأيسر -->
+            <div class="col-12 col-md-4 text-center text-md-right mb-4 mb-md-0">
+                <img src="images/who.png" class="img-fluid"
+                    style="max-height: 500px; max-width: 100%;margin-top: 20px;">
+                <!-- تصغير الصورة -->
+            </div>
+
+            <!-- النص في الجزء الأيمن -->
+            <div class="col-12 col-md-6 text-center text-md-left">
+                <h3 class="section-title">
+                    من نحن ؟
+                    <div
+                        style="width: 70px; height: 4px; background-color:#ffc107;position: relative;right: 250px;bottom: -10px;">
+                    </div>
+                </h3>
+                <h2 style="color:#07325c;">رحلتك الأكاديمية: مستندة إلى القيم، وموجهة بالمعرفة</h2>
+                <p>نحن منصة إرشاد أكاديمي متكاملة تهدف إلى مساعدة الطلاب في اتخاذ قراراتهم الدراسية بثقة ووضوح.
+                    نوفر أدوات ذكية لتسجيل المقررات، حساب المعدل التراكمي، تخطيط الجداول الدراسية، والحصول على
+                    نصائح أكاديمية مخصصة.</p>
+                <br>
+                <div class="row text-center">
+                    <div class="col-12 col-md-6 mb-3 mb-md-0">
+                        <h5><img src="images/vision-icon.png" style="height: 24px;"> رؤيتنا <img
+                                src="images/W-lines.png" style="width: 30px;"></h5>
+                        <p>تمكين الطلاب من تحقيق نجاح أكاديمي مستدام من خلال الإرشاد الذكي والتخطيط السليم.</p>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h5><img src="images/mission-icon.png" style="height: 24px;"> مهمتنا <img
+                                src="images/W-lines.png" style="width: 30px;"></h5>
+                        <p>تقديم حلول مبتكرة لدعم الطلاب أكاديمياً وإرشادهم نحو أفضل المسارات الدراسية والمهنية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img src="images/h-b-dots.png" class="position-absolute d-none d-md-block"
+            style="height: 400px; width: 160px;position: absolute;top: 200px;left: -100px;">
+    </div>
+
+    <div class="container py-5 text-center" style="width: 100%;background-color: #f4f1f1;">
+        <h3>فعالياتنا<img src="images/effect.png" style="width: 70px;"></h3>
+        <div id="eventCarousel" class="carousel slide mt-4" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner">
+
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="row">
+                        <!-- Card 1 -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card event-card">
+                                <div class="position-relative">
+                                    <img src="images/graduation.jfif" class="card-img-top">
+                                    <div class="event-date">
+                                        <p style="font-size: 25px;margin-bottom: -7px;">25</p>Aug 2025
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">أسبوع العلم والإبداع:تحفيزالإبداع بين طلاب الكلية بمجموعة ورش
+                                        ومسابقات
+                                        ومسابقات</h5>
+                                    <p class="text-warning">Future, Port Said</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card event-card">
+                                <div class="position-relative">
+                                    <img src="images/robots.jfif" class="card-img-top" alt="...">
+                                    <div class="event-date">
+                                        <p style="font-size: 25px;margin-bottom: -5px;">25</p> Aug 2025
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">الذكاء الاصطناعي: من الخيال إلى الواقع</h5>
+                                    <p class="card-text">ندوة حصرية حول مستقبل الذكاء الاصطناعي وتأثيره.</p>
+                                    <p class="text-warning">MTIS College, Portsaid</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card event-card">
+                                <div class="position-relative">
+                                    <img src="images/students.jfif" class="card-img-top">
+                                    <div class="event-date">
+                                        <p style="font-size: 25px;margin-bottom: -5px;">25</p> Aug 2025
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">ليلة النجوم</h5>
+                                    <p class="card-text">احتفال بتخرج دفعة 2025 وسط أجواء رائعة.</p>
+                                    <p class="text-warning">Palace of Culture, Port Said</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="row">
+                        <!-- Card 1 -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card event-card">
+                                <div class="position-relative">
+                                    <img src="images/graduation.jfif" class="card-img-top">
+                                    <div class="event-date">
+                                        <p style="font-size: 25px;margin-bottom: -5px;">25</p> Aug 2025
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">أسبوع العلم والإبداع</h5>
+                                    <p class="card-text">تحفيز الإبداع بين طلاب الكلية بمجموعة ورش ومسابقات.</p>
+                                    <p class="text-warning">Future, Port Said</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card event-card">
+                                <div class="position-relative">
+                                    <img src="images/robots.jfif" class="card-img-top" alt="...">
+                                    <div class="event-date">
+                                        <p style="font-size: 25px;margin-bottom: -5px;">25</p> Aug 2025
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">الذكاء الاصطناعي: من الخيال إلى الواقع</h5>
+                                    <p class="card-text">ندوة حصرية حول مستقبل الذكاء الاصطناعي وتأثيره.</p>
+                                    <p class="text-warning">MTIS College, Portsaid</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card event-card">
+                                <div class="position-relative">
+                                    <img src="images/students.jfif" class="card-img-top">
+                                    <div class="event-date">
+                                        <p style="font-size: 25px;margin-bottom: -5px;">25</p> Aug 2025
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">ليلة النجوم</h5>
+                                    <p class="card-text">احتفال بتخرج دفعة 2025 وسط أجواء رائعة.</p>
+                                    <p class="text-warning">Palace of Culture, Port Said</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <div class="row">
+                        <!-- Card 1 -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card event-card">
+                                <div class="position-relative">
+                                    <img src="images/graduation.jfif" class="card-img-top">
+                                    <div class="event-date">
+                                        <p style="font-size: 25px;margin-bottom: -5px;">25</p> Aug 2025
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">أسبوع العلم والإبداع</h5>
+                                    <p class="card-text">تحفيز الإبداع بين طلاب الكلية بمجموعة ورش ومسابقات.</p>
+                                    <p class="text-warning">Future, Port Said</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card event-card">
+                                <div class="position-relative">
+                                    <img src="images/robots.jfif" class="card-img-top" alt="...">
+                                    <div class="event-date">
+                                        <p style="font-size: 25px;margin-bottom: -5px;">25</p> Aug 2025
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">الذكاء الاصطناعي: من الخيال إلى الواقع</h5>
+                                    <p class="card-text">ندوة حصرية حول مستقبل الذكاء الاصطناعي وتأثيره.</p>
+                                    <p class="text-warning">MTIS College, Portsaid</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card event-card">
+                                <div class="position-relative">
+                                    <img src="images/students.jfif" class="card-img-top">
+                                    <div class="event-date">
+                                        <p style="font-size: 25px;margin-bottom: -5px;">25</p> Aug 2025
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">ليلة النجوم</h5>
+                                    <p class="card-text">احتفال بتخرج دفعة 2025 وسط أجواء رائعة.</p>
+                                    <p class="text-warning">Palace of Culture, Port Said</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="carousel-item">
+                    <div class="row">
+                        <!-- Card 1 -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card event-card">
+                                <div class="position-relative">
+                                    <img src="images/graduation.jfif" class="card-img-top">
+                                    <div class="event-date">
+                                        <p style="font-size: 25px;margin-bottom: -5px;">25</p> Aug 2025
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">أسبوع العلم والإبداع</h5>
+                                    <p class="card-text">تحفيز الإبداع بين طلاب الكلية بمجموعة ورش ومسابقات.</p>
+                                    <p class="text-warning">Future, Port Said</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card event-card">
+                                <div class="position-relative">
+                                    <img src="images/robots.jfif" class="card-img-top" alt="...">
+                                    <div class="event-date">
+                                        <p style="font-size: 25px;margin-bottom: -5px;">25</p> Aug 2025
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">الذكاء الاصطناعي: من الخيال إلى الواقع</h5>
+                                    <p class="card-text">ندوة حصرية حول مستقبل الذكاء الاصطناعي وتأثيره.</p>
+                                    <p class="text-warning">MTIS College, Portsaid</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="col-md-4 mb-3">
+                            <div class="card event-card">
+                                <div class="position-relative">
+                                    <img src="images/students.jfif" class="card-img-top">
+                                    <div class="event-date">
+                                        <p style="font-size: 25px;margin-bottom: -5px;">25</p> Aug 2025
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">ليلة النجوم</h5>
+                                    <p class="card-text">احتفال بتخرج دفعة 2025 وسط أجواء رائعة.</p>
+                                    <p class="text-warning">Palace of Culture, Port Said</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add other slides similarly -->
+
+            </div>
+
+            <!-- Control arrows -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-warning" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-warning" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+
+            <!-- Pagination dots -->
+            <div class="carousel-indicators" style="position: absolute;bottom: -50px;">
+                <button type="button" data-bs-target="#eventCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"
+                    style="width: 15px;height: 15px;background-color: #ffc107; border-radius: 50%;"></button>
+                <button type="button" data-bs-target="#eventCarousel" data-bs-slide-to="1" aria-label="Slide 2"
+                    style="width: 15px;height: 15px; background-color: #ffc107; border-radius: 50%;"></button>
+                <button type="button" data-bs-target="#eventCarousel" data-bs-slide-to="2" aria-label="Slide 3"
+                    style="width: 15px;height: 15px; background-color: #ffc107; border-radius: 50%;"></button>
+                <button type="button" data-bs-target="#eventCarousel" data-bs-slide-to="3" aria-label="Slide 4"
+                    style="width: 15px;height: 15px; background-color: #ffc107; border-radius: 50%;"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="container my-5">
+        <div class="row justify-content-center align-items-center text-center text-md-right">
+            <!-- صورة -->
+            <div class="col-12 col-md-6 d-flex justify-content-center mb-4 mb-md-0">
+                <img src="images/constructor.png" class="img-fluid rounded" alt="مستشار"
+                    style="max-width: 400px; height: auto;margin-left: 80px;">
+            </div>
+
+            <!-- نموذج الاتصال -->
+            <div class="col-12 col-md-6 mx-auto">
+                <form id="contact-form">
+                    <input type="email" class="form-control" id="email" placeholder="البريد الإلكتروني" required
+                        style="text-align: right;">
+                    <div class="invalid-feedback">الرجاء إدخال بريد إلكتروني صالح.</div>
+
+                    <input type="text" class="form-control mt-2" id="id" placeholder="الرقم القومي" required>
+                    <div class="invalid-feedback">الرجاء إدخال رقم قومي صالح.</div>
+
+                    <textarea class="form-control mt-2" id="message" rows="4" placeholder="اكتب تعليقك"
+                        required></textarea>
+                    <div class="invalid-feedback">الرجاء إدخال تعليق.</div>
+
+                    <button type="submit" class="btn btn-warning btn-lg mt-2"
+                        style="width: 180px; border-radius: 45px; color: #ffffff;">إرسال</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container" style="height: 350px;margin-bottom: 50px;margin-top: 20px;
+    background-color: #0047AB;
+    display: flex;
+    color: white;
+    border-radius: 30px;
+    box-shadow: 0px 0px 30px #00bfff;
+    padding: 20px;
+    align-items: center;">
+
+        <div class="right-section">
+            <h1>اكتشف مجموعة شاملة من الإرشادات الأكاديمية في منصة واحدة، مصممة لمساعدتك على تحقيق أهدافك الدراسية بثقة
+                وسهولة.</h1>
+            <div class="input-group"
+                style="display: flex; width: 80%; border-radius: 25px; overflow: hidden; background-color: white;margin-right: 30px;">
+                <input type="email" placeholder="أدخل البريد الإلكتروني"
+                    style="border: none; padding: 15px; flex-grow: 1; text-align: right; font-size: 16px; color: #777; border-radius: 25px 0 0 25px;">
+                <button
+                    style="width: 150px;background-color: #FFC107; color: white; border: none; padding: 15px 25px; font-size: 16px; cursor: pointer; border-radius: 0 25px 25px 0;">إرسال</button>
+            </div>
+        </div>
+        <div class="left-section">
+            <img src="images/header  .png" style="width: 450px;position: relative;top: -30px;" alt="Smiling Student">
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <div style="background-color: #0d1d4b; color: white; padding: 40px;width:100%;">
+        <div class="row justify-content-between align-items-start text-center text-md-start">
+            <div class="col-md-3 d-flex flex-column align-items-md-start align-items-center mb-6 mb-md-0"
+                style="margin-top: 50px;">
+                <h5 class="fw-bold mb-3" style="font-family:Verdana, Geneva, Tahoma, sans-serif;">Academic Advisor
+                </h5>
+                <div class="d-flex gap-3" style="margin-right: 37px;">
+                    <a href="#" class="text-warning fs-5"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-warning fs-5"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-warning fs-5"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-md-3 mb-6 mb-md-0 text-md-center">
+                <h5 class="fw-bold mb-3">معلومات</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">الأقسام</li>
+                    <li class="mb-2">من نحن</li>
+                    <li class="mb-2">سجل معنا</li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-6 mb-md-0 text-md-end">
+                <h5 class="fw-bold mb-3">تواصل معنا</h5>
+                <p><i class="fas fa-envelope text-warning ms-2" style="margin-left: 10px;"></i>123456789</p>
+                <p><i class="fab fa-whatsapp text-warning ms-2" style="margin-left: 10px;"></i>123456789</p>
+                <p><i class="fas fa-phone text-warning ms-2" style="margin-left: 10px;"></i>advisor@gmail.com</p>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <small>© Copyright team 2025, All Right Reserved</small>
+        </div>
+    </div>
+
+    <script>
+        // ✅ التحقق من النموذج عند الإرسال
+        document.getElementById("contact-form")?.addEventListener("submit", function (e) {
+            e.preventDefault(); // منع الإرسال التلقائي للنموذج
+
+            const email = document.getElementById("email");
+            const id = document.getElementById("id");
+            const message = document.getElementById("message");
+
+            let valid = true;
+
+            // ✅ التحقق من صحة البريد الإلكتروني
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                email.style.border = "2px solid red";
+                email.style.backgroundColor = "#ffe6e6";
+                valid = false;
+            } else {
+                email.style.border = "";
+                email.style.backgroundColor = "";
+            }
+
+            // ✅ التحقق من الرقم القومي (14 رقم فقط)
+            if (!/^\d{14}$/.test(id.value)) {
+                id.style.border = "2px solid red";
+                id.style.backgroundColor = "#ffe6e6";
+                valid = false;
+            } else {
+                id.style.border = "";
+                id.style.backgroundColor = "";
+            }
+
+            // ✅ التحقق من أن الرسالة ليست فارغة
+            if (message.value.trim() === "") {
+                message.style.border = "2px solid red";
+                message.style.backgroundColor = "#ffe6e6";
+                valid = false;
+            } else {
+                message.style.border = "";
+                message.style.backgroundColor = "";
+            }
+
+            // ✅ إذا كانت كل القيم صحيحة، أظهر تنبيه وامسح البيانات
+            if (valid) {
+                alert("✅ تم إرسال النموذج بنجاح!");
+
+                // تأثير اهتزاز للزر (بشكل بسيط بدون CSS خارجي)
+                const submitBtn = this.querySelector("button[type='submit']");
+                if (submitBtn) {
+                    submitBtn.style.transition = "transform 0.2s";
+                    submitBtn.style.transform = "translateX(5px)";
+                    setTimeout(() => {
+                        submitBtn.style.transform = "translateX(-5px)";
+                        setTimeout(() => {
+                            submitBtn.style.transform = "translateX(0)";
+                        }, 100);
+                    }, 100);
+                }
+
+                // مسح الحقول
+                email.value = "";
+                id.value = "";
+                message.value = "";
+            }
+        });
+
+        // ✅ تنقل ناعم عند الضغط على روابط داخل الصفحة
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute("href"));
+                if (target) {
+                    target.scrollIntoView({ behavior: "smooth" });
+                }
+            });
+        });
+
+        // ✅ تفعيل مؤثرات الظهور عند التمرير
+        window.addEventListener("scroll", () => {
+            const elements = document.querySelectorAll(".section-title, .event-card");
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.style.opacity = "1";
+                    el.style.transform = "translateY(0)";
+                    el.style.filter = "blur(0)";
+                }
+            });
+        });
+
+        // ✅ إعداد مبدئي للعناصر التي ستظهر لاحقًا
+        document.querySelectorAll(".section-title, .event-card").forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(50px)";
+            el.style.filter = "blur(5px)";
+            el.style.transition = "all 0.6s ease-in-out";
+        });
+        // ✅ إنشاء زر الرجوع لأعلى من خلال JavaScript
+        const scrollBtn = document.createElement("button");
+        scrollBtn.id = "scrollToTop";
+        scrollBtn.innerText = "↑";
+        document.body.appendChild(scrollBtn);
+
+        // ✅ تنسيق الزر عبر JavaScript (بدون CSS خارجي)
+        scrollBtn.style.position = "fixed";
+        scrollBtn.style.bottom = "30px";
+        scrollBtn.style.right = "30px";
+        scrollBtn.style.display = "none";
+        scrollBtn.style.backgroundColor = "#007BFF";
+        scrollBtn.style.color = "white";
+        scrollBtn.style.border = "none";
+        scrollBtn.style.borderRadius = "50%";
+        scrollBtn.style.width = "50px"; // ← تثبيت الطول والعرض
+        scrollBtn.style.height = "50px";
+        scrollBtn.style.fontSize = "22px";
+        scrollBtn.style.textAlign = "center";
+        scrollBtn.style.lineHeight = "50px"; // ← لتوسيط السهم عموديًا
+        scrollBtn.style.cursor = "pointer";
+        scrollBtn.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
+        scrollBtn.style.zIndex = "1000";
+        scrollBtn.style.transition = "background-color 0.3s ease";
+
+        // ✅ تأثير عند المرور على الزر
+        scrollBtn.addEventListener("mouseover", () => {
+            scrollBtn.style.backgroundColor = "#0056b3";
+        });
+        scrollBtn.addEventListener("mouseout", () => {
+            scrollBtn.style.backgroundColor = "#007BFF";
+        });
+
+        // ✅ إظهار الزر عند التمرير لأسفل
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        });
+
+        // ✅ تمرير لأعلى الصفحة عند الضغط
+        scrollBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تسجيل المقررات</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-bg: #f0f2f5;
+            --sidebar-bg: #042c76;
+            --sidebar-text: #fff;
+            --sidebar-active-bg: #1b52b6;
+            --header-bg: #fff;
+            --header-text: #495057;
+            --table-border: #dee2e6;
+            --table-header-bg: #0c008d;
+            --table-header-text: #fff;
+            --table-row-even-bg: #f8f9fa;
+            --button-primary: #007bff;
+            --button-primary-hover: #0069d9;
+            --button-secondary: #f8f9fa;
+            --button-secondary-hover: #e2e6ea;
+            --button-secondary-text: #495057;
+            --note-text: #dc3545;
+            --footer-bg: #fff;
+            --footer-text: #777;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--main-bg);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            width: 300px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: width 0.3s;
+        }
+
+        .sidebar h2,
+        .sidebar h4 {
+            margin-bottom: 15px;
+            white-space: nowrap;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .sidebar ul li a {
+            display: flex;
+            align-items: center;
+            color: var(--sidebar-text);
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li a.active {
+            background-color: var(--sidebar-active-bg);
+        }
+
+        .sidebar ul li a i {
+            margin-left: 10px;
+            font-size: 1.1rem;
+        }
+
+        .sidebar ul li a span {
+            margin-left: 15px;
+            white-space: nowrap;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: var(--main-bg);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .search {
+            position: relative;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search input {
+            width: 70%;
+            padding: .6rem 2.5rem .6rem 1rem;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .search .ser {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: .5rem;
+        }
+
+        .profile .noti {
+            background: #dfdede;
+            padding: 10px;
+            border-radius: 5px;
+            color: #777;
+        }
+
+        .profile img {
+            width: 40px;
+            border-radius: 50%;
+        }
+
+        .registration-info {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .courses-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: var(--header-bg);
+            border: 1px solid var(--table-border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .courses-table th,
+        .courses-table td {
+            padding: 12px 15px;
+            text-align: right;
+            border-bottom: 1px solid var(--table-border);
+        }
+
+        .courses-table th {
+            background-color: var(--table-header-bg);
+            color: var(--table-header-text);
+        }
+
+        .courses-table tbody tr:nth-child(even) {
+            background-color: var(--table-row-even-bg);
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .actions button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .note {
+            color: var(--note-text);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            text-align: center;
+            padding: 15px;
+            font-size: 0.8rem;
+            color: var(--footer-text);
+            border-top: 1px solid var(--table-border);
+        }
+
+        @media (max-width: 767.98px) {
+            .container {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+            }
+
+            .sidebar {
+                width: 60px;
+                align-items: center;
+                padding: 10px;
+                flex-shrink: 0;
+                overflow: hidden;
+            }
+
+            .sidebar:hover {
+                width: 300px;
+            }
+
+            .sidebar h2,
+            .sidebar h4,
+            .sidebar ul li a span {
+                opacity: 0;
+                width: 0;
+                margin-left: 0;
+                transition: all 0.3s;
+                overflow: hidden;
+            }
+
+            .sidebar:hover h2,
+            .sidebar:hover h4,
+            .sidebar:hover ul li a span {
+                opacity: 1;
+                width: auto;
+                margin-left: 15px;
+            }
+
+            .sidebar ul li a {
+                justify-content: center;
+                padding: 10px;
+            }
+
+            .sidebar:hover ul li a {
+                justify-content: flex-start;
+                padding-right: 15px;
+            }
+
+            .content {
+                min-width: calc(100vw - 60px);
+                padding: 15px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .actions button {
+                width: 100%;
+            }
+
+            .registration-info {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+
+        /* التأثيرات الحركية */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .note {
+            display: none;
+            color: var(--note-text);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .selected {
+            background-color: #1b52b6 !important;
+            /* تغيير اللون عند التحديد */
+            color: white;
+        }
+
+        /* تأثير الأزرار */
+        .confirm-button:disabled {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="search">
+            <i class="fa-solid fa-magnifying-glass ser"></i>
+            <input type="search" placeholder="ابحث عن...">
+        </div>
+        <div class="profile">
+            <a href="#"><i class="fa-regular fa-bell noti"></i></a>
+            <a href="student-data.html"><img src="images/avatar.png" alt="أفاتار"></a>
+        </div>
+    </div>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h2>مرشد أكاديمي</h2>
+            <h4>تكنولوجيا الإدارة ونظم المعلومات</h4>
+            <ul>
+                <li><a href="student-data.html"><i class="fa-solid fa-list-check"></i><span>بيانات الطالب</span></a>
+                </li>
+                <li><a href="#"><i class="fa-solid fa-calendar-days"></i><span>المعدل التراكمي</span></a></li>
+                <li><a href="Course-registration.html" class="active"><i class="fa-regular fa-clipboard"></i><span>تسجيل
+                            المقررات</span></a></li>
+                <li><a href="#"><i class="fa-regular fa-star"></i><span>الإشعارات</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-book-open"></i><span>مكتبة المواد</span></a></li>
+                <li><a href="#"><i class="fa-regular fa-bookmark"></i><span>أداة الجدولة</span></a></li>
+                <li><a href="#"><i class="fa-solid fa-book"></i><span>المواد الدراسية</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            <div class="registration-info">
+                <div>الحد الأقصى للساعات: 20</div>
+                <div>الحد الأدنى للساعات: 4</div>
+                <div>عدد الساعات المسجلة: 0</div>
+            </div>
+
+            <table class="courses-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>وصف المقرر</th>
+                        <th>عدد الساعات المعتمدة</th>
+                        <th>دكتور المقرر</th>
+                        <th>نوع المقرر</th>
+                        <th>الحالة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="radio" name="course_1"></td>
+                        <td>تمييز الأنماط</td>
+                        <td>4.00</td>
+                        <td>د. سارة أبو حشيش</td>
+                        <td>مقرر أساسي</td>
+                        <td><input type="checkbox" checked></td>
+                    </tr>
+                    <tr style="background-color:#007bff8c ;">
+                        <td><input type="radio" name="course_2"></td>
+                        <td>تمييز الأنماط</td>
+                        <td>2.00</td>
+                        <td>د. سارة أبو حشيش</td>
+                        <td>مقرر اختياري</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="course_3"></td>
+                        <td>تمييز الأنماط</td>
+                        <td>2.00</td>
+                        <td>د. سارة أبو حشيش</td>
+                        <td>مقرر أساسي</td>
+                        <td><input type="checkbox" checked></td>
+                    </tr>
+                    <tr style="background-color:#007bff8c ;">
+                        <td><input type="radio" name="course_4"></td>
+                        <td>تمييز الأنماط</td>
+                        <td>2.00</td>
+                        <td>د. سارة أبو حشيش</td>
+                        <td>مقرر اختياري</td>
+                        <td><input type="checkbox"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="course_5"></td>
+                        <td>تمييز الأنماط</td>
+                        <td>2.00</td>
+                        <td>د. سارة أبو حشيش</td>
+                        <td>مقرر أساسي</td>
+                        <td><input type="checkbox" checked></td>
+                    </tr>
+                    <tr style="background-color:#007bff8c ;">
+                        <td><input type="radio" name="course_6"></td>
+                        <td>تمييز الأنماط</td>
+                        <td>2.00</td>
+                        <td>د. سارة أبو حشيش</td>
+                        <td>مقرر أساسي</td>
+                        <td><input type="checkbox" checked></td>
+                    </tr>
+                    <tr>
+                        <td><input type="radio" name="course_7"></td>
+                        <td>تمييز الأنماط</td>
+                        <td>2.00</td>
+                        <td>د. سارة أبو حشيش</td>
+                        <td>مقرر أساسي</td>
+                        <td><input type="checkbox" checked></td>
+                    </tr>
+                    <tr style="background-color:#007bff8c ;">
+                        <td><input type="radio" name="course_8"></td>
+                        <td>تمييز الأنماط</td>
+                        <td>2.00</td>
+                        <td>د. سارة أبو حشيش</td>
+                        <td>مقرر أساسي</td>
+                        <td><input type="checkbox" checked></td>
+                    </tr>
+                    <!-- باقي الصفوف تقدر تنسخها من الكود الأصلي -->
+                </tbody>
+            </table>
+
+            <div class="actions">
+                <button class="confirm-button" style="background-color: #0c008d;color: white;">تأكيد</button>
+                <button class="print-button" style="background-color: #0c008d;color: white;">طباعة الاستمارة</button>
+            </div>
+
+            <div class="note">لا يعتبر التسجيل نهائي حتى يتم دفع الرسوم المستحقة</div>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; Copyright team 2024, All Right Reserved</p>
+    </footer>
+    <script>
+        // تعريف المتغيرات الخاصة
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const confirmButton = document.querySelector('.confirm-button');
+        const printButton = document.querySelector('.print-button');
+        const note = document.querySelector('.note');
+        const hoursRegisteredText = document.querySelector('.registration-info div:nth-child(3)');
+        let maxHours = 20;
+        let minHours = 4;
+        let registeredHours = 0;
+
+        // تحديث عدد الساعات المسجلة عند تغيير حالة الـ Checkbox
+        function updateRegisteredHours() {
+            registeredHours = 0;
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    let courseHours = parseFloat(checkbox.closest('tr').children[2].innerText);
+                    registeredHours += courseHours;
+                }
+            });
+
+            hoursRegisteredText.textContent = `عدد الساعات المسجلة: ${registeredHours}`;
+            toggleConfirmButton();
+        }
+
+        // تفعيل/إلغاء تفعيل زر "تأكيد" بناءً على الساعات المسجلة
+        function toggleConfirmButton() {
+            if (registeredHours >= minHours && registeredHours <= maxHours) {
+                confirmButton.disabled = false;
+                confirmButton.style.backgroundColor = '#0c008d'; // إعادة تفعيل اللون
+            } else {
+                confirmButton.disabled = true;
+                confirmButton.style.backgroundColor = '#ccc'; // تعطيل اللون
+            }
+        }
+
+        // التأكد من الساعات المسجلة عند الضغط على زر "تأكيد"
+        confirmButton.addEventListener('click', () => {
+            if (registeredHours < minHours) {
+                alert('يجب عليك تسجيل حد أدنى من الساعات.');
+            } else if (registeredHours > maxHours) {
+                alert('تجاوزت الحد الأقصى للساعات.');
+            } else {
+                note.style.display = 'block';  // إظهار التنبيه
+                note.style.animation = 'fadeIn 2s';
+            }
+        });
+
+        // إضافة تأثيرات الحركية للأزرار
+        printButton.addEventListener('mouseenter', () => {
+            printButton.style.transform = 'scale(1.1)';
+        });
+        printButton.addEventListener('mouseleave', () => {
+            printButton.style.transform = 'scale(1)';
+        });
+
+        // تحديث الساعات المسجلة عند تغيير حالة الـ Checkbox
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateRegisteredHours);
+        });
+
+        // تطبيق تأثير fade-in على التنبيه عند الضغط على "تأكيد"
+        function fadeInElement(element) {
+            element.style.opacity = 0;
+            element.style.transition = "opacity 2s ease-in-out";
+            element.style.opacity = 1;
+        }
+
+        // تغيير حالة المقررات إلى اختياري أو أساسي عند النقر
+        const courseRows = document.querySelectorAll('tbody tr');
+        courseRows.forEach(row => {
+            row.addEventListener('click', () => {
+                row.classList.toggle('selected');
+                const courseType = row.querySelector('td:nth-child(5)');
+                if (courseType.innerText === 'مقرر أساسي') {
+                    courseType.innerText = 'مقرر اختياري';
+                    row.style.backgroundColor = '#007bff8c';
+                } else {
+                    courseType.innerText = 'مقرر أساسي';
+                    row.style.backgroundColor = '';
+                }
+            });
+        });
+
+        // دالة الـ Animation fadeIn
+        setTimeout(() => {
+            fadeInElement(note);
+        }, 500);
+
+    </script>
+</body>
+
+</html>
